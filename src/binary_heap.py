@@ -71,11 +71,18 @@ class Heap:
         self.heapify(1)
         return max_val
 
-    def insert(self, key):
+    def max_insert(self, key):
         self.HeapSize = self.HeapSize + 1
         i = self.HeapSize
-        self.Array.append(self[self.get_parent_index(i)])
-        while i > 1 and self[self.get_parent_index(i)] < key:
-            self[i] = self[self.get_parent_index(i)]
-            i = self.get_parent_index(i)
-        self[i] = key
+        if self.HeapSize > len(self.Array):
+            self.Array.append(self[self.get_parent_index(i)])
+        self.increase_key(i, key)
+
+    def increase_key(self, i, k):
+        if k < self[i]:
+            raise RuntimeError
+        else:
+            while i > 1 and self[self.get_parent_index(i)] < k:
+                self[i] = self[self.get_parent_index(i)]
+                i = self.get_parent_index(i)
+            self[i] = k
