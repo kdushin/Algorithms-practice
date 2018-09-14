@@ -32,7 +32,7 @@ class SinglyLinkedList(object):
             return
 
         is_end = False
-        while current and is_end is False:
+        while is_end is False:
             next_item = current.get_next
             if next_item is None:
                 is_end = True

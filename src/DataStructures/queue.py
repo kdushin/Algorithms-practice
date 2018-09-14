@@ -19,9 +19,8 @@ class Queue(object):
             raise ValueError("Queue is empty!")
         return current
 
-
     def enqueue(self, val):
-        self.elements.add()
+        self.elements.add_to_last(val)
 
     def dequeue(self):
         target_element = self.elements.head
